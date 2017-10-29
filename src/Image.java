@@ -1,6 +1,3 @@
-package facebuk;
-
-
 public class Image {
 	String filename;
 	public Image (String filename) {
