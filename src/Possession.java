@@ -1,14 +1,14 @@
 public class Possession extends FacebukObject{
 
-    private Person fowner;
-    private float fprice;
+    private Person fOwner;
+    private float fPrice;
 
     public Possession(String name, Image image, float price) {
         super(name, image);
-        fprice = price;
+        fPrice = price;
     }
 
     public void setOwner(Person owner) {
-        fowner = owner;
+        fOwner = owner;
     }
 }

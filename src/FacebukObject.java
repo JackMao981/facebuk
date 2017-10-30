@@ -1,11 +1,11 @@
 public class FacebukObject {
 
-    private String fname;
-    private Image fimage;
+    private String fName;
+    private Image fImage;
 
     public FacebukObject(String name, Image image) {
-        fname = name;
-        fimage = image;
+        fName = name;
+        fImage = image;
     }
 
     @Override
@@ -18,11 +18,11 @@ public class FacebukObject {
     }
 
     public String getName(){
-        return fname;
+        return fName;
     }
 
     public Image getImage(){
-        return fimage;
+        return fImage;
     }
 
 

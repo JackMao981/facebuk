@@ -1,13 +1,13 @@
 public class Pet extends Profile {
 
-    private Person fowner;
+    private Person fOwner;
 
     public Pet(String name, Image image) {
         super(name, image);
     }
 
     public void setOwner(Person owner) {
-        fowner = owner;
+        fOwner = owner;
     }
 
 }
