@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Profile extends FacebukObject {
 
@@ -77,5 +78,35 @@ public class Profile extends FacebukObject {
 		}
 		return happiestMoment;
 	}
+
+	public ArrayList<Profile> findMaximumCliqueOfFriends() {
+        if (this.isClique(fFriends)) {
+            return fFriends;
+        } else {
+            return recursiveHelper(new ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
+        }
+    }
+
+    public boolean isClique(ArrayList set) {
+	    return true;
+    }
+
+    private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
+	    ArrayList aggregate = new ArrayList<ArrayList<Profile>>();
+
+	    for(int i = 0; i < set.size(); i++) {
+	        for (int j = 0; j < set.get(i).size(); j++) {
+                if (this.isClique((ArrayList) set.get(i).subList(j, set.get(i).size()))) {
+                    return (ArrayList) set.get(i).subList(j, set.get(i).size());
+                } else {
+                    aggregate.add(set.get(i).subList(j, set.get(i).size()));
+                }
+            }
+        }
+
+        recursiveHelper(aggregate);
+	    //should never reach this
+	    return aggregate;
+    }
 
 }
