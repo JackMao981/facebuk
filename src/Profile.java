@@ -33,7 +33,19 @@ public class Profile extends FacebukObject {
 	public Profile getFriendWithWhomIAmHappiest() {
 		Profile bestFriend = null;
 		if (fFriends != null) {
+			bestFriend = fFriends.get(0);
 			float highestAverage = -1f;
+			float counterZero = 0f;
+			for (int j = 0; j < fMoments.size(); j++) {
+				if (fMoments.get(j).fParticipants.contains(bestFriend)) {
+					highestAverage += fMoments.get(j).fSmileValues
+							.get(fMoments.get(j).fParticipants.indexOf(bestFriend));
+				}
+				counterZero++;
+			}
+
+			highestAverage = highestAverage / counterZero;
+
 			for (int i = 0; i < fFriends.size(); i++) {
 				Profile aFriend = fFriends.get(i);
 				float counter = 0f;
