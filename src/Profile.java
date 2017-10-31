@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Profile extends FacebukObject {
 
@@ -90,7 +92,26 @@ public class Profile extends FacebukObject {
 	}
 
 	public boolean isClique(ArrayList set) {
-		return true;
+
+		final ArrayList<Profile> sortedFriends = fFriends;
+		sortedFriends.sort(new Comparator<Profile>() {
+			@Override
+			public int compare(Profile p1, Profile p2) {
+				return p1.getName().compareTo(p2.getName());
+			}
+		});
+
+		for (int i = 0; i < sortedFriends.size(); i++) {
+			//make sure this is actually final
+			final ArrayList<Profile> friendsOfFriend = sortedFriends.get(i).getFriends();
+
+			if (sortedFriends.equals(friendsOfFriend.set(friendsOfFriend.indexOf(friendsOfFriend.get(i)), this))) {
+				return true;
+			} else {
+				return false;
+			}
+
+		}
 	}
 
 	private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
@@ -107,7 +128,7 @@ public class Profile extends FacebukObject {
 		}
 
 		recursiveHelper(aggregate);
-		// should never reach this
+		// should never reach this aka this is probs iffy code
 		return aggregate;
 	}
 
