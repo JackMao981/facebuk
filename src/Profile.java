@@ -29,38 +29,28 @@ public class Profile extends FacebukObject {
 	public ArrayList<Profile> getFriends() {
 		return fFriends;
 	}
-//!!!!!!!!!!!!!!!!!!!! THIS IS WRONG !!!!!!!!!!!!!!!!!!!
+
 	public Profile getFriendWithWhomIAmHappiest() {
 		Profile bestFriend = null;
-
-		// Looks to see if fFriends is not null
 		if (fFriends != null) {
-
-			// sets BFF to be first element
-			bestFriend = fFriends.get(0);
-			float oldAverage = 0f;
-
-			// sets oldAverage to be that of the first element
-			for (int i = 0; i < bestFriend.getMoments().size(); i++) {
-				oldAverage += (float) bestFriend.getMoments().get(i).averageHappiness()
-						/ bestFriend.getMoments().size();
-			}
-
-			// looks for the happiest friend
+			float highestAverage = -1f;
 			for (int i = 0; i < fFriends.size(); i++) {
-				Profile friend = fFriends.get(i);
-
-				float newAverage = 0f;
-
-				// looks through the moments to find the newAverage
-				for (int j = 0; j < friend.getMoments().size(); j++) {
-					newAverage += (float) friend.getMoments().get(j).averageHappiness() / friend.getMoments().size();
+				Profile aFriend = fFriends.get(i);
+				float counter = 0f;
+				float averageHappiness = 0f;
+				for (int j = 0; j < fMoments.size(); j++) {
+					if (fMoments.get(j).fParticipants.contains(aFriend)) {
+						averageHappiness += fMoments.get(j).fSmileValues
+								.get(fMoments.get(j).fParticipants.indexOf(aFriend));
+					}
+					counter++;
 				}
 
-				// checks if newAverage is bigger than oldAverage
-				if (newAverage > oldAverage) {
-					oldAverage = newAverage;
-					bestFriend = friend;
+				averageHappiness = averageHappiness / counter;
+
+				if (averageHappiness > highestAverage) {
+					highestAverage = averageHappiness;
+					bestFriend = fFriends.get(i);
 				}
 			}
 		}
