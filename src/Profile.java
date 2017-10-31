@@ -29,7 +29,7 @@ public class Profile extends FacebukObject {
 	public ArrayList<Profile> getFriends() {
 		return fFriends;
 	}
-
+//!!!!!!!!!!!!!!!!!!!! THIS IS WRONG !!!!!!!!!!!!!!!!!!!
 	public Profile getFriendWithWhomIAmHappiest() {
 		Profile bestFriend = null;
 
@@ -42,7 +42,8 @@ public class Profile extends FacebukObject {
 
 			// sets oldAverage to be that of the first element
 			for (int i = 0; i < bestFriend.getMoments().size(); i++) {
-				oldAverage += bestFriend.getMoments().get(i).averageHappiness() / bestFriend.getMoments().size();
+				oldAverage += (float) bestFriend.getMoments().get(i).averageHappiness()
+						/ bestFriend.getMoments().size();
 			}
 
 			// looks for the happiest friend
@@ -52,9 +53,8 @@ public class Profile extends FacebukObject {
 				float newAverage = 0f;
 
 				// looks through the moments to find the newAverage
-				for (int j = 0; j < fFriends.get(i).getMoments().size(); j++) {
-					newAverage += fFriends.get(i).getMoments().get(j).averageHappiness()
-							/ fFriends.get(i).getMoments().size();
+				for (int j = 0; j < friend.getMoments().size(); j++) {
+					newAverage += (float) friend.getMoments().get(j).averageHappiness() / friend.getMoments().size();
 				}
 
 				// checks if newAverage is bigger than oldAverage
@@ -80,33 +80,33 @@ public class Profile extends FacebukObject {
 	}
 
 	public ArrayList<Profile> findMaximumCliqueOfFriends() {
-        if (this.isClique(fFriends)) {
-            return fFriends;
-        } else {
-            return recursiveHelper(new ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
-        }
-    }
+		if (this.isClique(fFriends)) {
+			return fFriends;
+		} else {
+			return recursiveHelper(new ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
+		}
+	}
 
-    public boolean isClique(ArrayList set) {
-	    return true;
-    }
+	public boolean isClique(ArrayList set) {
+		return true;
+	}
 
-    private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
-	    ArrayList aggregate = new ArrayList<ArrayList<Profile>>();
+	private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
+		ArrayList aggregate = new ArrayList<ArrayList<Profile>>();
 
-	    for(int i = 0; i < set.size(); i++) {
-	        for (int j = 0; j < set.get(i).size(); j++) {
-                if (this.isClique((ArrayList) set.get(i).subList(j, set.get(i).size()))) {
-                    return (ArrayList) set.get(i).subList(j, set.get(i).size());
-                } else {
-                    aggregate.add(set.get(i).subList(j, set.get(i).size()));
-                }
-            }
-        }
+		for (int i = 0; i < set.size(); i++) {
+			for (int j = 0; j < set.get(i).size(); j++) {
+				if (this.isClique((ArrayList) set.get(i).subList(j, set.get(i).size()))) {
+					return (ArrayList) set.get(i).subList(j, set.get(i).size());
+				} else {
+					aggregate.add(set.get(i).subList(j, set.get(i).size()));
+				}
+			}
+		}
 
-        recursiveHelper(aggregate);
-	    //should never reach this
-	    return aggregate;
-    }
+		recursiveHelper(aggregate);
+		// should never reach this
+		return aggregate;
+	}
 
 }
