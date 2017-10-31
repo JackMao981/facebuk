@@ -160,8 +160,24 @@ public class FacebukPartialTester {
 	}
 
 	// TODO: write more methods to test getFriendWithWhomIAmHappiest 
+		
+	
 	// TODO: write more methods to test getOverallHappiestMoment 
+	@Test
+	public void testGetOverallHappiestMoment () {
+		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
+	}
 	
 	// TODO: write methods to test isClique 
+	@Test
+	public void testIsClique () {
+		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
+	}
+	
 	// TODO: write methods to test findMaximumCliqueOfFriends
+	@Test
+	public void testFindMaximumCliqueOfFriends() {
+		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
+	}
+
 }
