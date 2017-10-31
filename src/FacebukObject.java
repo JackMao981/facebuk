@@ -8,9 +8,9 @@ public class FacebukObject {
         fImage = image;
     }
 
-    @Override
     public boolean equals(Object o) {
-        if (this == o) {
+    	FacebukObject f = (FacebukObject) o;
+        if (this.fName.equals(f.getName())) {
             return true;
         } else {
             return false;
