@@ -8,6 +8,11 @@ public class Profile extends FacebukObject {
 	private ArrayList<Profile> fFriends;
 	private ArrayList<Moment> fMoments;
 
+    /**
+     * Creates an instance of a Profile, with the given name and image.
+     * @param name the name of the profile.
+     * @param image the picture associated with the profile.
+     */
 	public Profile(String name, Image image) {
 		super(name, image);
 		fFriends = null;
@@ -15,12 +20,10 @@ public class Profile extends FacebukObject {
 	}
 
 	public void setFriends(ArrayList friends) {
-		// does this add to the existing arraylist or replace it?
 		fFriends = friends;
 	}
 
 	public void setMoments(ArrayList moments) {
-		// same question as above
 		fMoments = moments;
 	}
 
@@ -104,7 +107,6 @@ public class Profile extends FacebukObject {
 		boolean evaluation = false;
 
 		for (int i = 0; i < sortedFriends.size(); i++) {
-			//make sure this is actually final
 			final ArrayList<Profile> friendsOfFriend = sortedFriends.get(i).getFriends();
 
 			if (sortedFriends.equals(friendsOfFriend.set(friendsOfFriend.indexOf(friendsOfFriend.get(i)), this))) {
@@ -132,7 +134,7 @@ public class Profile extends FacebukObject {
 		}
 
 		recursiveHelper(aggregate);
-		// should never reach this aka this is probs iffy code
+
 		return aggregate;
 	}
 
