@@ -15,8 +15,8 @@ public class Profile extends FacebukObject {
      */
 	public Profile(String name, Image image) {
 		super(name, image);
-		fFriends = null;
-		fMoments = null;
+		fFriends = new ArrayList<Profile>();
+		fMoments = new ArrayList<Moment>();
 	}
 
     /**
@@ -59,7 +59,7 @@ public class Profile extends FacebukObject {
      */
 	public Profile getFriendWithWhomIAmHappiest() {
 		Profile bestFriend = null;
-		if (fFriends != null) {
+		if (!fFriends.isEmpty()) {
 			bestFriend = fFriends.get(0);
 			float highestAverage = -1f;
 			float counterZero = 0f;
