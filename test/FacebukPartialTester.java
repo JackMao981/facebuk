@@ -155,7 +155,7 @@ public class FacebukPartialTester {
 		//original
 		assertEquals(_michelle.getOverallHappiestMoment(), _meAndBarack);
 		//our own
-		assertEquals(_joe.getOverallHappiestMoment(), _michelleJoeBoAndMalia);
+		assertEquals(_joe.getOverallHappiestMoment(), _joe.getMoments().get(0));
 		assertNotEquals(_malia.getOverallHappiestMoment(), _meAndBarack);
 	}
 
@@ -164,7 +164,13 @@ public class FacebukPartialTester {
 		//original
 		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
 		//our own
-		assertEquals(_joe.getFriendWithWhomIAmHappiest(), _michelle);
+		assertEquals(_joe.getFriendWithWhomIAmHappiest(), null);
+		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
+		assertEquals(_malia.getFriendWithWhomIAmHappiest(), _bo);
+		
+		Person person = new Person("no friends",null);
+		assertEquals(person.getFriendWithWhomIAmHappiest(), null);		
+
 	}
 
 	public void testIsClique() {
