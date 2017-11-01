@@ -166,6 +166,7 @@ public class FacebukPartialTester {
 	@Test
 	public void testGetOverallHappiestMoment () {
 		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
+		//test null case
 	}
 	
 	// TODO: write methods to test isClique 
