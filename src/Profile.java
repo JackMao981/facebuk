@@ -32,7 +32,7 @@ public class Profile extends FacebukObject {
 
 	public Profile getFriendWithWhomIAmHappiest() {
 		Profile bestFriend = null;
-		if (fFriends != null) {
+		if (fFriends != null || !fFriends.isEmpty()) {
 			bestFriend = fFriends.get(0);
 			float highestAverage = -1f;
 			float counterZero = 0f;
