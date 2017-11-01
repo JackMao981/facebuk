@@ -1,11 +1,18 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Profile extends FacebukObject {
 
 	private ArrayList<Profile> fFriends;
 	private ArrayList<Moment> fMoments;
 
+    /**
+     * Creates an instance of a Profile, with the given name and image.
+     * @param name the name of the profile.
+     * @param image the picture associated with the profile.
+     */
 	public Profile(String name, Image image) {
 		super(name, image);
 		fFriends = new ArrayList<Profile>();
@@ -13,12 +20,10 @@ public class Profile extends FacebukObject {
 	}
 
 	public void setFriends(ArrayList friends) {
-		// does this add to the existing arraylist or replace it?
 		fFriends = friends;
 	}
 
 	public void setMoments(ArrayList moments) {
-		// same question as above
 		fMoments = moments;
 	}
 
@@ -90,7 +95,29 @@ public class Profile extends FacebukObject {
 	}
 
 	public boolean isClique(ArrayList set) {
-		return true;
+
+		final ArrayList<Profile> sortedFriends = fFriends;
+		sortedFriends.sort(new Comparator<Profile>() {
+			@Override
+			public int compare(Profile p1, Profile p2) {
+				return p1.getName().compareTo(p2.getName());
+			}
+		});
+
+		boolean evaluation = false;
+
+		for (int i = 0; i < sortedFriends.size(); i++) {
+			final ArrayList<Profile> friendsOfFriend = sortedFriends.get(i).getFriends();
+
+			if (sortedFriends.equals(friendsOfFriend.set(friendsOfFriend.indexOf(friendsOfFriend.get(i)), this))) {
+				evaluation = true;
+			} else {
+				return false;
+			}
+
+		}
+
+		return evaluation;
 	}
 
 	private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
@@ -107,7 +134,7 @@ public class Profile extends FacebukObject {
 		}
 
 		recursiveHelper(aggregate);
-		// should never reach this
+
 		return aggregate;
 	}
 
