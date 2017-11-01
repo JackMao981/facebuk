@@ -151,31 +151,6 @@ public class Profile extends FacebukObject {
 	 * @return true if the given arraylist is a clique, false if it is not.
 	 */
 	public boolean isClique(ArrayList<Profile> set) {
-
-		// final ArrayList<Profile> sortedFriends = fFriends;
-		// sortedFriends.sort(new Comparator<Profile>() {
-		// @Override
-		// public int compare(Profile p1, Profile p2) {
-		// return p1.getName().compareTo(p2.getName());
-		// }
-		// });
-		//
-		// boolean evaluation = false;
-		//
-		// for (int i = 0; i < sortedFriends.size(); i++) {
-		// final ArrayList<Profile> friendsOfFriend =
-		// sortedFriends.get(i).getFriends();
-		//
-		// if
-		// (sortedFriends.equals(friendsOfFriend.set(friendsOfFriend.indexOf(friendsOfFriend.get(i)),
-		// this))) {
-		// evaluation = true;
-		// } else {
-		// return false;
-		// }
-		//
-		// }
-
 		for (int i = 0; i < set.size(); i++) {
 			if (fFriends.contains(set.get(i))) {
 				for (int j = 0; j < set.size(); j++) {
