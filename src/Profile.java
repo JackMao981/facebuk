@@ -19,22 +19,44 @@ public class Profile extends FacebukObject {
 		fMoments = null;
 	}
 
+    /**
+     * Sets a Profile object's fFriends arraylist to be equal to the given arraylist.
+     * @param friends the arraylist to set fFriends equal to.
+     */
 	public void setFriends(ArrayList friends) {
 		fFriends = friends;
 	}
 
+    /**
+     * Sets a Profile objects fMoments arraylist to be equal to the given arraylist.
+     * @param moments the arraylist to set fMoments equal to.
+     */
 	public void setMoments(ArrayList moments) {
 		fMoments = moments;
 	}
 
+    /**
+     * Gets a Profile object's fMoments.
+     * @return fMoments, the arraylist of moments associated with a profile.
+     */
 	public ArrayList<Moment> getMoments() {
 		return fMoments;
 	}
 
+    /**
+     * Gets a Profile object's fFriends.
+     * @return fFriends, the arraylist of friends associated with a profile.
+     */
 	public ArrayList<Profile> getFriends() {
 		return fFriends;
 	}
 
+    /**
+     * Loops through the moments a Profile object shares with other Profile objects, a calculates the average
+     * happiness value they have with each friend in their friend list. The method then returns the friend with
+     * whom they are happiest.
+     * @return The Profile object with which the object has the highest average happiness.
+     */
 	public Profile getFriendWithWhomIAmHappiest() {
 		Profile bestFriend = null;
 		if (fFriends != null) {
@@ -74,6 +96,11 @@ public class Profile extends FacebukObject {
 		return bestFriend;
 	}
 
+    /**
+     * Loops through a profile's moments, and returns the one with the highest average happiness
+     * between all participants.
+     * @return The happiest moment stored in the profile.
+     */
 	public Moment getOverallHappiestMoment() {
 		Moment happiestMoment = null;
 		float avgHappiestMoment = 0f;
@@ -86,6 +113,10 @@ public class Profile extends FacebukObject {
 		return happiestMoment;
 	}
 
+    /**
+     * Finds the maximum clique of friends that a given person/pet belongs to.
+     * @return an arraylist of profiles that forms a clique.
+     */
 	public ArrayList<Profile> findMaximumCliqueOfFriends() {
 		if (this.isClique(fFriends)) {
 			return fFriends;
@@ -94,6 +125,12 @@ public class Profile extends FacebukObject {
 		}
 	}
 
+    /**
+     * Determines if the given list of profiles form a clique (where all profiles are friends with each other), by sorting
+     * and comparing the given arraylist.
+     * @param set a list of people who may form a click.
+     * @return true if the given arraylist is a clique, false if it is not.
+     */
 	public boolean isClique(ArrayList set) {
 
 		final ArrayList<Profile> sortedFriends = fFriends;
@@ -119,7 +156,11 @@ public class Profile extends FacebukObject {
 
 		return evaluation;
 	}
-
+    /**
+     * Given an arraylist of a list of friends, with each value in the list being a possible clique. The method removes
+     * a profile from each potential clique and tests to see if it remains a clique. After checking a potential clique,
+     * recursion is performed and the next potential clique is tested.
+     */
 	private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
 		ArrayList aggregate = new ArrayList<ArrayList<Profile>>();
 
