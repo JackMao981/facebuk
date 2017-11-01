@@ -114,6 +114,18 @@ public class Profile extends FacebukObject {
 	}
 
     /**
+     * Finds the maximum clique of friends that a given person/pet belongs to.
+     * @return an arraylist of profiles that forms a clique.
+     */
+	public ArrayList<Profile> findMaximumCliqueOfFriends() {
+		if (this.isClique(fFriends)) {
+			return fFriends;
+		} else {
+			return recursiveHelper(new ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
+		}
+	}
+
+    /**
      * Determines if the given list of profiles form a clique (where all profiles are friends with each other), by sorting
      * and comparing the given arraylist.
      * @param set a list of people who may form a click.
@@ -122,7 +134,7 @@ public class Profile extends FacebukObject {
 	public boolean isClique(ArrayList set) {
 
 		final ArrayList<Profile> sortedFriends = fFriends;
-	sortedFriends.sort(new Comparator<Profile>() {
+		sortedFriends.sort(new Comparator<Profile>() {
 			@Override
 			public int compare(Profile p1, Profile p2) {
 				return p1.getName().compareTo(p2.getName());
@@ -144,19 +156,6 @@ public class Profile extends FacebukObject {
 
 		return evaluation;
 	}
-
-	/**
-	 * Finds the maximum clique of friends that a given person/pet belongs to.
-	 * @return an arraylist of profiles that forms a clique.
-	 */
-	public ArrayList<Profile> findMaximumCliqueOfFriends() {
-		if (this.isClique(fFriends)) {
-			return fFriends;
-		} else {
-			return recursiveHelper(new ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
-		}
-	}
-
     /**
      * Given an arraylist of a list of friends, with each value in the list being a possible clique. The method removes
      * a profile from each potential clique and tests to see if it remains a clique. After checking a potential clique,
