@@ -184,7 +184,8 @@ public class FacebukPartialTester {
 		assertEquals(person.getFriendWithWhomIAmHappiest(), null);		
 
 	}
-
+	
+	@Test
 	public void testIsClique() {
 		//our own
 		assertEquals(_michelle.isClique(new ArrayList<Profile>(Arrays.asList(_michelle))), true);
@@ -193,11 +194,11 @@ public class FacebukPartialTester {
 	}
 	
 	
-
+	@Test
 	public void testFindMaximumCliqueOfFriends() {
 		assertEquals(_michelle.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(_kevin)));
 		assertEquals(a.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(b, d)));
-		
+		assertNotEquals(a.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(c, d)));
 	}
 
 	// TODO: write more methods to test getFriendWithWhomIAmHappiest
