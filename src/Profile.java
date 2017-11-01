@@ -134,11 +134,21 @@ public class Profile extends FacebukObject {
 	 * @return an arraylist of profiles that forms a clique.
 	 */
 	public ArrayList<Profile> findMaximumCliqueOfFriends() {
-		if (this.isClique(fFriends)) {
-			return fFriends;
-		} else {
-			return recursiveHelper(new ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
+		// if (this.isClique(fFriends)) {
+		// return fFriends;
+		// } else {
+		// return recursiveHelper(new
+		// ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
+		// }
+
+		ArrayList<ArrayList<Profile>> array = new ArrayList<ArrayList<Profile>>();
+		for (int i = 0; i < fFriends.size(); i++) {
+			for (int j = 0; j < fFriends.size(); j++) {
+
+			}
 		}
+
+		return null;
 	}
 
 	/**
@@ -155,17 +165,17 @@ public class Profile extends FacebukObject {
 			if (fFriends.contains(set.get(i))) {
 				for (int j = 0; j < set.size(); j++) {
 					if (fFriends.get(j).getFriends().contains(set.get(i))) {
-						//do nothing
+						// do nothing
 					} else {
 						return false;
 					}
 				}
 			} else {
 				return false;
-			}			
+			}
 		}
 		return true;
-		
+
 	}
 
 	/**
