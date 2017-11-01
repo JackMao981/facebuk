@@ -189,30 +189,4 @@ public class Profile extends FacebukObject {
 		return true;
 
 	}
-
-	/**
-	 * Given an arraylist of a list of friends, with each value in the list
-	 * being a possible clique. The method removes a profile from each potential
-	 * clique and tests to see if it remains a clique. After checking a
-	 * potential clique, recursion is performed and the next potential clique is
-	 * tested.
-	 */
-	private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
-		ArrayList aggregate = new ArrayList<ArrayList<Profile>>();
-
-		for (int i = 0; i < set.size(); i++) {
-			for (int j = 0; j < set.get(i).size(); j++) {
-				if (this.isClique((ArrayList) set.get(i).subList(j, set.get(i).size()))) {
-					return (ArrayList) set.get(i).subList(j, set.get(i).size());
-				} else {
-					aggregate.add(set.get(i).subList(j, set.get(i).size()));
-				}
-			}
-		}
-
-		recursiveHelper(aggregate);
-
-		return aggregate;
-	}
-
 }
