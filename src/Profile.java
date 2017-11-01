@@ -101,17 +101,21 @@ public class Profile extends FacebukObject {
 			}
 		});
 
+		boolean evaluation = false;
+
 		for (int i = 0; i < sortedFriends.size(); i++) {
 			//make sure this is actually final
 			final ArrayList<Profile> friendsOfFriend = sortedFriends.get(i).getFriends();
 
 			if (sortedFriends.equals(friendsOfFriend.set(friendsOfFriend.indexOf(friendsOfFriend.get(i)), this))) {
-				return true;
+				evaluation = true;
 			} else {
 				return false;
 			}
 
 		}
+
+		return evaluation;
 	}
 
 	private ArrayList<Profile> recursiveHelper(ArrayList<ArrayList<Profile>> set) {
