@@ -193,6 +193,7 @@ public class FacebukPartialTester {
 		assertEquals(_bo.isClique(new ArrayList<Profile>(Arrays.asList(_malia))), true);
 		assertEquals(a.isClique(new ArrayList<Profile>(Arrays.asList(b, d))), true);
 		assertEquals(c.isClique(new ArrayList<Profile>(Arrays.asList(d))), true);
+		//
 	}
 
 	@Test
