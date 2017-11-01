@@ -12,7 +12,7 @@ import java.util.Arrays;
  * If it does not, you may get a very low grade for your assignment.
  */
 public class FacebukPartialTester {
-	private Person _barack, _michelle, _kevin, _ina, _joe, _malia;
+	private Person _barack, _michelle, _kevin, _ina, _joe, _malia, a, b, c, d, e;
 	private Pet _bo, _sunny;
 	private Moment _meAndBarack;
 	private ArrayList _michelleAndBarack, _michelleJoeBoAndMalia;
@@ -33,6 +33,11 @@ public class FacebukPartialTester {
 		_ina = new Person("Ina", new Image("Ina.png"));
 		_joe = new Person("Joe", new Image("Joe.png"));
 		_malia = new Person("Malia", new Image("Malia.png"));
+		a = new Person("a", new Image("Malia.png"));
+		b = new Person("b", new Image("Malia.png"));
+		c = new Person("c", new Image("Malia.png"));
+		d = new Person("d", new Image("Malia.png"));
+		e = new Person("e", new Image("Malia.png"));
 	}
 
 	private void initPets () {
@@ -44,6 +49,13 @@ public class FacebukPartialTester {
 	}
 
 	private void initGroups () {
+
+		ArrayList<Profile> aFriends = new ArrayList<Profile>(Arrays.asList(b, c, d));
+		ArrayList<Profile> bFriends = new ArrayList<Profile>(Arrays.asList(a, d, e));
+		ArrayList<Profile> cFriends = new ArrayList<Profile>(Arrays.asList(d, e, b));
+		ArrayList<Profile> dFriends = new ArrayList<Profile>(Arrays.asList(a, c, e));
+		ArrayList<Profile> eFriends = new ArrayList<Profile>(Arrays.asList(a, b, c));
+
 		// Kevin, Barack, and Ina
 		final ArrayList michelleFriends = new ArrayList();
 		michelleFriends.add(_kevin);
@@ -182,6 +194,8 @@ public class FacebukPartialTester {
 
 	public void testFindMaximumCliqueOfFriends() {
 		assertEquals(_michelle.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(_kevin)));
+		assertEquals(a.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(b, d)));
+		
 	}
 
 	// TODO: write more methods to test getFriendWithWhomIAmHappiest
