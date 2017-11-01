@@ -188,7 +188,7 @@ public class FacebukPartialTester {
 	@Test
 	public void testIsClique() {
 		//our own
-		assertEquals(_michelle.isClique(new ArrayList<Profile>(Arrays.asList(_michelle))), true);
+		assertNotEquals(_michelle.isClique(new ArrayList<Profile>(Arrays.asList(_michelle))), true);
 		assertEquals(_bo.isClique(new ArrayList<Profile>(Arrays.asList(_malia, _sunny))), false);
 		assertEquals(_bo.isClique(new ArrayList<Profile>(Arrays.asList(_malia))), true);
 	}
