@@ -179,6 +179,8 @@ public class FacebukPartialTester {
 		assertEquals(_bo.isClique(new ArrayList<Profile>(Arrays.asList(_malia, _sunny))), false);
 		assertEquals(_bo.isClique(new ArrayList<Profile>(Arrays.asList(_malia))), true);
 	}
+	
+	
 
 	// TODO: write more methods to test getFriendWithWhomIAmHappiest
 	// TODO: write more methods to test getOverallHappiestMoment
