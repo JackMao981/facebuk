@@ -134,21 +134,33 @@ public class Profile extends FacebukObject {
 	 * @return an arraylist of profiles that forms a clique.
 	 */
 	public ArrayList<Profile> findMaximumCliqueOfFriends() {
-		// if (this.isClique(fFriends)) {
-		// return fFriends;
-		// } else {
-		// return recursiveHelper(new
-		// ArrayList<ArrayList<Profile>>(Arrays.asList(fFriends)));
-		// }
 
 		ArrayList<ArrayList<Profile>> array = new ArrayList<ArrayList<Profile>>();
-		for (int i = 0; i < fFriends.size(); i++) {
-			for (int j = 0; j < fFriends.size(); j++) {
+		
+		int n = fFriends.size();
+		// inspired by http://www.geeksforgeeks.org/finding-all-subsets-of-a-given-set-in-java/
+		for (int i = 0; i < (1 << n); i++) {
+			array.add(new ArrayList<Profile>());
+			for (int j = 0; j < n; j++)
 
+				if ((i & (1 << j)) > 0) {
+                    array.get(i).add(fFriends.get(j));
+				}
+		}
+		for (int i = array.size() - 1; i >= 0; i--) {
+			if (!isClique(array.get(i))) {
+				array.remove(i);
 			}
 		}
 
-		return null;
+		ArrayList<Profile> answer = new ArrayList<Profile>();
+		for (int i = 0; i < array.size(); i++) {
+			if (array.get(i).size() > answer.size()) {
+				answer = array.get(i);
+			}
+		}
+
+		return answer;
 	}
 
 	/**

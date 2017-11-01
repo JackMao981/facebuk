@@ -210,8 +210,20 @@ public class FacebukPartialTester {
 
 	@Test
 	public void testFindMaximumCliqueOfFriends() {
-		assertEquals(_michelle.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(_kevin)));
-		assertEquals(a.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(b, d)));
+//		assertEquals(_michelle.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(_kevin)));
+//		assertEquals(a.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(d, b)));
+		Person person = new Person("",null);
+		Person b = new Person("", null);
+		Person c = new Person("",null);
+		ArrayList<Profile> a = new ArrayList<Profile>();
+		a.add(person);
+		a.add(c);
+		a.add(b);
+		person.setFriends(a);
+		b.setFriends(a);
+		c.setFriends(a);
+		
+		assertEquals(person.findMaximumCliqueOfFriends(), a);
 
 	}
 
