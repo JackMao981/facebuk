@@ -167,7 +167,9 @@ public class FacebukPartialTester {
 	public void testGetOverallHappiestMoment () {
 		assertEquals(_michelle.getFriendWithWhomIAmHappiest(), _barack);
 		assertEquals(_malia.getFriendWithWhomIAmHappiest(), _bo);
-
+		
+		Person person = new Person("no friends",null);
+		assertEquals(person.getFriendWithWhomIAmHappiest(), null);		
 		//test null case
 	}
 	
