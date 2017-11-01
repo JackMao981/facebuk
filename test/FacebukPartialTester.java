@@ -182,6 +182,10 @@ public class FacebukPartialTester {
 	
 	
 
+	public void testFindMaximumCliqueOfFriends() {
+		assertEquals(_michelle.findMaximumCliqueOfFriends(), new ArrayList<Profile>(Arrays.asList(_kevin)));
+	}
+
 	// TODO: write more methods to test getFriendWithWhomIAmHappiest
 	// TODO: write more methods to test getOverallHappiestMoment
 

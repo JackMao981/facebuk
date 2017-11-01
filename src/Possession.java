@@ -14,6 +14,10 @@ public class Possession extends FacebukObject{
         fPrice = price;
     }
 
+    /**
+     * Sets a possession's owner to the given Person object.
+     * @param owner the Person object that owns the possession.
+     */
     public void setOwner(Person owner) {
         fOwner = owner;
     }
